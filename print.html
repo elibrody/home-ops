@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js latte">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Home-Ops</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="././assets/css/mdbook-admonish.css">
+        <link rel="stylesheet" href="./theme/catppuccin.css">
+        <link rel="stylesheet" href="./theme/catppuccin-highlight.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "macchiato" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Welcome</li><li class="chapter-item expanded "><a href="introduction.html">👋 Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Overview</li><li class="chapter-item expanded "><a href="overview/hardware.html">🔧 Hardware</a></li><li class="chapter-item expanded "><div>🌐 Network</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div>DNS</div></li></ol></li><li class="chapter-item expanded "><a href="overview/cloud-services.html">☁️ Cloud services</a></li><li class="chapter-item expanded affix "><li class="part-title">Home Ops</li><li class="chapter-item expanded "><a href="kubernetes/index.html">⛵ Kubernetes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="kubernetes/gitops.html">GitOps</a></li><li class="chapter-item "><a href="kubernetes/storage.html">Storage</a></li><li class="chapter-item "><a href="kubernetes/backups.html">Backups</a></li></ol></li><li class="chapter-item expanded "><a href="automation/index.html">Automation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="automation/terraform/index.html">⚙️ Terraform</a></li><li class="chapter-item "><a href="automation/ansible/index.html">🚀 Ansible</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Notes and ramblings</li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Home-Ops</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/bjw-s/home-ops" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<div id="admonition-warning" class="admonition warning">
+<div class="admonition-title">
+<p>Warning</p>
+<p><a class="admonition-anchor-link" href="introduction.html#admonition-warning"></a></p>
+</div>
+<div>
+<p>These docs contain information that relates to my setup.
+They may or may not work for you.</p>
+</div>
+</div>
+<hr />
+<br />
+<div align="center">
+<img src="https://github.com/bjw-s/home-ops/blob/main/docs/assets/images/logo.jpg?raw=true" align="left" width="144px" height="144px"/>
+<h2 id="my-home-operations-repository"><a class="header" href="#my-home-operations-repository">My Home Operations repository</a></h2>
+<p><em>... managed by Flux, Renovate and GitHub Actions</em> :robot:</p>
+</div>
+<div align="center">
+<p><a href="https://discord.gg/k8s-at-home"><img src="https://img.shields.io/discord/673534664354430999?style=for-the-badge&amp;label&amp;logo=discord&amp;logoColor=white&amp;color=blue" alt="Discord" /></a>
+<a href="https://www.talos.dev/"><img src="https://img.shields.io/badge/v1.26-blue?style=for-the-badge&amp;logo=kubernetes&amp;logoColor=white" alt="Kubernetes" /></a>
+<a href="https://github.com/bjw-s/home-ops/actions/workflows/schedule-renovate.yaml"><img src="https://img.shields.io/github/actions/workflow/status/bjw-s/home-ops/schedule-renovate.yaml?branch=main&amp;label=&amp;logo=renovatebot&amp;style=for-the-badge&amp;color=blue" alt="Renovate" /></a></p>
+</div>
+<p>:wave: Welcome to my Home Operations repository. This is a mono repository for my home infrastructure and Kubernetes cluster. I try to adhere to Infrastructure as Code (IaC) and GitOps practices using the tools like <a href="https://www.ansible.com/">Ansible</a>, <a href="https://www.terraform.io/">Terraform</a>, <a href="https://kubernetes.io/">Kubernetes</a>, <a href="https://github.com/fluxcd/flux2">Flux</a>, <a href="https://github.com/renovatebot/renovate">Renovate</a> and <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
+<hr />
+<h3 id="-docs"><a class="header" href="#-docs">📖 Docs</a></h3>
+<p>The documentation that goes along with this repo can be found <a href="https://bjw-s.github.io/home-ops/">over here</a>.</p>
+<hr />
+<h3 id="handshake-thanks"><a class="header" href="#handshake-thanks">:handshake: Thanks</a></h3>
+<p>Thanks to all the people who donate their time to the <a href="https://discord.gg/k8s-at-home">Kubernetes @Home</a> Discord community. A lot of inspiration for my cluster comes from the people that have shared their clusters using the <a href="https://github.com/topics/k8s-at-home">k8s-at-home</a> GitHub topic. Be sure to check out the <a href="https://nanne.dev/k8s-at-home-search/">Kubernetes @Home search</a> for ideas on how to deploy applications or get ideas on what you can deploy.</p>
+<hr />
+<h3 id="-license"><a class="header" href="#-license">🔏 License</a></h3>
+<p>See <a href="https://github.com/bjw-s/home-ops/blob/main/LICENSE">LICENSE</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="hardware"><a class="header" href="#hardware">Hardware</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Device</th><th>Count</th><th>OS Disk Size</th><th>Data Disk Size</th><th>Ram</th><th>Operating System</th><th>Purpose</th></tr></thead><tbody>
+<tr><td>YCSD 6LAN i211 MiniPC i3 7100U</td><td>1</td><td>128GB mSATA</td><td>-</td><td>8GB</td><td><a href="http://vyos.net">VyOS</a></td><td>Router</td></tr>
+<tr><td>Intel NUC8i3BEH</td><td>1</td><td>512GB SSD</td><td>1TB NVMe (rook-ceph)</td><td>32GB</td><td><a href="https://www.talos.dev">Talos</a></td><td>Kubernetes Node</td></tr>
+<tr><td>Intel NUC8i5BEH</td><td>2</td><td>512GB SSD</td><td>1TB NVMe (rook-ceph)</td><td>32GB</td><td><a href="https://www.talos.dev">Talos</a></td><td>Kubernetes Node</td></tr>
+<tr><td>Synology DS918+</td><td>1</td><td>-</td><td>2x14TB + 1x10TB + 1x6TB (SHR)</td><td>8GB</td><td>Synology DSM7</td><td>NFS + Backup Server</td></tr>
+<tr><td>Raspberry Pi 4</td><td>1</td><td>128GB (SD)</td><td>-</td><td>4GB</td><td><a href="https://pikvm.org">PiKVM</a></td><td>Network KVM</td></tr>
+<tr><td>Unifi USW-Lite-16-PoE</td><td>2</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Core network switch</td></tr>
+<tr><td>Unifi USW-Flex-Mini</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Secondary network switch</td></tr>
+<tr><td>Unifi UAP-AC-Pro</td><td>4</td><td>-</td><td>-</td><td>-</td><td>-</td><td>Wireless AP</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="cloud-cloud-services"><a class="header" href="#cloud-cloud-services">:cloud: Cloud services</a></h1>
+<p>While most of my infrastructure and workloads are selfhosted I do rely upon the cloud for certain key parts of my setup. This saves me from having to worry about two things. (1) Dealing with chicken/egg scenarios and (2) services I critically need whether my cluster is online or not.</p>
+<p>The alternative solution to these two problems would be to host a Kubernetes cluster in the cloud and deploy applications like <a href="https://www.vaultproject.io/">HCVault</a>, <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>, <a href="https://ntfy.sh/">ntfy</a>, and <a href="https://https://goauthentik.io/">Authentik</a>. However, maintaining another cluster and monitoring another group of workloads is a lot more time and effort than I am willing to put in and only saves me roughly $18/month.</p>
+<div class="table-wrapper"><table><thead><tr><th>Service</th><th>Use</th><th>Cost</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/">GitHub</a></td><td>Hosting this repository and continuous integration/deployments</td><td>Free</td></tr>
+<tr><td><a href="https://auth0.com/">Auth0</a></td><td>Identity management and authentication</td><td>Free</td></tr>
+<tr><td><a href="https://www.cloudflare.com/">Cloudflare</a></td><td>Domain, DNS and proxy management</td><td>Free</td></tr>
+<tr><td><a href="https://1password.com/">1Password</a></td><td>Secrets with <a href="https://external-secrets.io/">External Secrets</a></td><td>~$65/y</td></tr>
+<tr><td><a href="https://www.terraform.io/">Terraform Cloud</a></td><td>Storing Terraform state</td><td>Free</td></tr>
+<tr><td><a href="https://www.backblaze.com/b2">B2 Storage</a></td><td>Offsite application backups</td><td>~$5/m</td></tr>
+<tr><td><a href="https://pushover.net/">Pushover</a></td><td>Kubernetes Alerts and application notifications</td><td>Free</td></tr>
+<tr><td><a href="https://fly.io/">Fly</a></td><td>Simple application deployment in the cloud</td><td>Free</td></tr>
+<tr><td></td><td></td><td>Total: ~$10/m</td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="kubernetes"><a class="header" href="#kubernetes">Kubernetes</a></h1>
+<p>My main cluster is <a href="http://talos.dev/">Talos</a> provisioned on bare-metal using the official <code>talosctl</code> CLI tool. I render my <a href="https://github.com/bjw-s/home-ops/tree/main/infrastructure/talos/cluster-0">Talos configuration</a> using the <a href="https://github.com/budimanjojo/talhelper">talhelper</a> CLI tool. This allows me to keep the Talos configuration as DRY as possible.</p>
+<p>This is a semi hyper-converged cluster, workloads and block storage are sharing the same available resources on my nodes while I have a separate server for (NFS) file storage.</p>
+<h2 id="core-components"><a class="header" href="#core-components">Core Components</a></h2>
+<ul>
+<li><a href="https://github.com/actions/actions-runner-controller">actions-runner-controller</a>: Self-hosted Github runners.</li>
+<li><a href="https://github.com/cilium/cilium">cilium</a>: Internal Kubernetes networking plugin.</li>
+<li><a href="https://cert-manager.io/docs/">cert-manager</a>: Creates SSL certificates for services in my Kubernetes cluster.</li>
+<li><a href="https://github.com/kubernetes-sigs/external-dns">external-dns</a>: Automatically manages DNS records from my cluster in a cloud DNS provider.</li>
+<li><a href="https://github.com/external-secrets/external-secrets/">external-secrets</a>: Managed Kubernetes secrets using <a href="https://github.com/1Password/connect">1Password Connect</a>.</li>
+<li><a href="https://github.com/kubernetes/ingress-nginx/">ingress-nginx</a>: Ingress controller to expose HTTP traffic to pods over DNS.</li>
+<li><a href="https://github.com/k8snetworkplumbingwg/multus-cni/">multus</a>: Allows multi-homing Kubernetes pods.</li>
+<li><a href="https://github.com/rook/rook">rook</a>: Distributed block storage for peristent storage.</li>
+<li><a href="https://toolkit.fluxcd.io/guides/mozilla-sops/">sops</a>: Managed secrets for Kubernetes, Ansible and Terraform which are commited to Git.</li>
+<li><a href="https://github.com/weaveworks/tf-controller">tf-controller</a>: Additional Flux component used to run Terraform from within a Kubernetes cluster.</li>
+<li><a href="https://github.com/backube/volsync">volsync</a> and <a href="https://github.com/backube/snapscheduler">snapscheduler</a>: Backup and recovery of persistent volume claims.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gitops"><a class="header" href="#gitops">GitOps</a></h1>
+<p><a href="https://github.com/fluxcd/flux2">Flux</a> watches my <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/">kubernetes</a> folder (see <a href="kubernetes/gitops.html#directory-structure">Directory structure</a>) and makes the changes to my cluster based on the YAML manifests.</p>
+<p>The way Flux works for me here is it will recursively search the <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/cluster-0/apps">kubernetes/apps</a> folder until it finds the most top level <code>kustomization.yaml</code> per directory and then apply all the resources listed in it. That aforementioned <code>kustomization.yaml</code> will generally only have a namespace resource and one or many Flux kustomizations. Those Flux kustomizations will generally have a <code>HelmRelease</code> or other resources related to the application underneath it which will be applied.</p>
+<p><a href="https://github.com/renovatebot/renovate">Renovate</a> watches my <strong>entire</strong> repository looking for dependency updates, when they are found a PR is automatically created. When PRs are merged <a href="https://github.com/fluxcd/flux2">Flux</a> applies the changes to my cluster.</p>
+<h2 id="directory-structure"><a class="header" href="#directory-structure">Directory structure</a></h2>
+<p>My home-ops repository contains the following directories under <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/">kubernetes</a>.</p>
+<pre><code class="language-sh">📁 kubernetes      # Kubernetes clusters defined as code
+├─📁 cluster-0     # My main kubernetes cluster
+│ ├─📁 bootstrap   # Flux installation
+│ ├─📁 flux        # Main Flux configuration of repository
+│ └─📁 apps        # Apps deployed into my cluster grouped by namespace (see below)
+└─📁 tools         # Manifests that come in handy every now and then
+</code></pre>
+<h2 id="flux-resource-layout"><a class="header" href="#flux-resource-layout">Flux resource layout</a></h2>
+<p>Below is a a high level look at the layout of how my directory structure with Flux works. In this brief example you are able to see that <code>authelia</code> will not be able to run until <code>glauth</code> and  <code>cloudnative-pg</code> are running. It also shows that the <code>Cluster</code> custom resource depends on the <code>cloudnative-pg</code> Helm chart. This is needed because <code>cloudnative-pg</code> installs the <code>Cluster</code> custom resource definition in the Helm chart.</p>
+<pre><code class="language-python"># Key: &lt;kind&gt; :: &lt;metadata.name&gt;
+GitRepository :: home-ops-kubernetes
+    Kustomization :: cluster
+        Kustomization :: cluster-apps
+            Kustomization :: cluster-apps-authelia
+                DependsOn:
+                    Kustomization :: cluster-apps-glauth
+                    Kustomization :: cluster-apps-cloudnative-pg-cluster
+                HelmRelease :: authelia
+            Kustomization :: cluster-apps-glauth
+                HelmRelease :: glauth
+            Kustomization :: cluster-apps-cloudnative-pg
+                HelmRelease :: cloudnative-pg
+            Kustomization :: cluster-apps-cloudnative-pg-cluster
+                DependsOn:
+                    Kustomization :: cluster-apps-cloudnative-pg
+                Cluster :: postgres
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="storage"><a class="header" href="#storage">Storage</a></h1>
+<p>Storage in my cluster is handled in a number of ways.
+The in-cluster storage is provided by a <a href="https://github.com/rook/rook">rook</a> Ceph cluster that is running on a number of my nodes.</p>
+<h2 id="rook-ceph-block-storage"><a class="header" href="#rook-ceph-block-storage">rook-ceph block storage</a></h2>
+<p>The bulk of my cluster storage relies on <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/cluster-0/apps/rook-ceph/rook-ceph/cluster%5D">my <code>CephBlockPool</code></a>. This ensures that my data is replicated across my storage nodes.</p>
+<h2 id="nfs-storage"><a class="header" href="#nfs-storage">NFS storage</a></h2>
+<p>Finally, I have my NAS that exposes several exports over NFS. Given how NFS is a very bad idea for storing application data (see for example <a href="https://github.com/Sonarr/Sonarr/issues/1886">this Github issue</a>) I only use it to store data at rest, such as my personal media files, Linux ISO's, backups, etc.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="backups"><a class="header" href="#backups">Backups</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="automation"><a class="header" href="#automation">Automation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="terraform"><a class="header" href="#terraform">Terraform</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ansible"><a class="header" href="#ansible">Ansible</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
