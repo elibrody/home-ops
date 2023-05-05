@@ -149,7 +149,7 @@
                     <main>
                         <h1 id="-cloud-services"><a class="header" href="#-cloud-services">☁️ Cloud services</a></h1>
 <p>While most of my infrastructure and workloads are selfhosted I do rely upon the cloud for certain key parts of my setup. This saves me from having to worry about two things. (1) Dealing with chicken/egg scenarios and (2) services I critically need whether my cluster is online or not.</p>
-<p>The alternative solution to these two problems would be to host a Kubernetes cluster in the cloud and deploy applications like <a href="https://www.vaultproject.io/">HCVault</a>, <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>, <a href="https://ntfy.sh/">ntfy</a>, and <a href="https://https://goauthentik.io/">Authentik</a>. However, maintaining another cluster and monitoring another group of workloads is a lot more time and effort than I am willing to put in and only saves me roughly $18/month.</p>
+<p>The alternative solution to these two problems would be to host a Kubernetes cluster in the cloud and deploy applications like <a href="https://www.vaultproject.io/">HCVault</a>, <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>, <a href="https://ntfy.sh/">ntfy</a>, and <a href="https://https://goauthentik.io/">Authentik</a>. However, maintaining another cluster and monitoring another group of workloads is a lot more time and effort than I am willing to put in and only saves me roughly $10/month.</p>
 <div class="table-wrapper"><table><thead><tr><th>Service</th><th>Use</th><th>Cost</th></tr></thead><tbody>
 <tr><td><a href="https://github.com/">GitHub</a></td><td>Hosting this repository and continuous integration/deployments</td><td>Free</td></tr>
 <tr><td><a href="https://auth0.com/">Auth0</a></td><td>Identity management and authentication</td><td>Free</td></tr>
@@ -158,7 +158,6 @@
 <tr><td><a href="https://www.terraform.io/">Terraform Cloud</a></td><td>Storing Terraform state</td><td>Free</td></tr>
 <tr><td><a href="https://www.backblaze.com/b2">B2 Storage</a></td><td>Offsite application backups</td><td>~$5/m</td></tr>
 <tr><td><a href="https://pushover.net/">Pushover</a></td><td>Kubernetes Alerts and application notifications</td><td>Free</td></tr>
-<tr><td><a href="https://fly.io/">Fly</a></td><td>Simple application deployment in the cloud</td><td>Free</td></tr>
 <tr><td></td><td></td><td>Total: ~$10/m</td></tr>
 </tbody></table>
 </div>
