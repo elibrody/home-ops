@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="../././assets/css/mdbook-admonish.css">
         <link rel="stylesheet" href=".././theme/catppuccin.css">
         <link rel="stylesheet" href=".././theme/catppuccin-highlight.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
 
     </head>
     <body>
@@ -149,19 +150,19 @@
                     <main>
                         <h1 id="gitops"><a class="header" href="#gitops">GitOps</a></h1>
 <p><a href="https://github.com/fluxcd/flux2">Flux</a> watches my <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/">kubernetes</a> folder (see <a href="#directory-structure">Directory structure</a>) and makes the changes to my cluster based on the YAML manifests.</p>
-<p>The way Flux works for me here is it will recursively search the <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/cluster-0/apps">kubernetes/apps</a> folder until it finds the most top level <code>kustomization.yaml</code> per directory and then apply all the resources listed in it. That aforementioned <code>kustomization.yaml</code> will generally only have a namespace resource and one or many Flux kustomizations. Those Flux kustomizations will generally have a <code>HelmRelease</code> or other resources related to the application underneath it which will be applied.</p>
+<p>The way Flux works for me here is it will recursively search the <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/main/apps">kubernetes/apps</a> folder until it finds the most top level <code>kustomization.yaml</code> per directory and then apply all the resources listed in it. That aforementioned <code>kustomization.yaml</code> will generally only have a namespace resource and one or many Flux kustomizations. Those Flux kustomizations will generally have a <code>HelmRelease</code> or other resources related to the application underneath it which will be applied.</p>
 <p><a href="https://github.com/renovatebot/renovate">Renovate</a> watches my <strong>entire</strong> repository looking for dependency updates, when they are found a PR is automatically created. When PRs are merged <a href="https://github.com/fluxcd/flux2">Flux</a> applies the changes to my cluster.</p>
 <h2 id="directory-structure"><a class="header" href="#directory-structure">Directory structure</a></h2>
 <p>My home-ops repository contains the following directories under <a href="https://github.com/bjw-s/home-ops/tree/main/kubernetes/">kubernetes</a>.</p>
 <pre><code class="language-sh">📁 kubernetes      # Kubernetes clusters defined as code
-├─📁 cluster-0     # My main kubernetes cluster
+├─📁 main     # My main kubernetes cluster
 │ ├─📁 bootstrap   # Flux installation
 │ ├─📁 flux        # Main Flux configuration of repository
 │ └─📁 apps        # Apps deployed into my cluster grouped by namespace (see below)
 └─📁 tools         # Manifests that come in handy every now and then
 </code></pre>
 <h2 id="flux-resource-layout"><a class="header" href="#flux-resource-layout">Flux resource layout</a></h2>
-<p>Below is a a high level look at the layout of how my directory structure with Flux works. In this brief example you are able to see that <code>authelia</code> will not be able to run until <code>glauth</code> and  <code>cloudnative-pg</code> are running. It also shows that the <code>Cluster</code> custom resource depends on the <code>cloudnative-pg</code> Helm chart. This is needed because <code>cloudnative-pg</code> installs the <code>Cluster</code> custom resource definition in the Helm chart.</p>
+<p>Below is a a high level look at the layout of how my directory structure with Flux works. In this brief example you are able to see that <code>authelia</code> will not be able to run until <code>glauth</code> and <code>cloudnative-pg</code> are running. It also shows that the <code>Cluster</code> custom resource depends on the <code>cloudnative-pg</code> Helm chart. This is needed because <code>cloudnative-pg</code> installs the <code>Cluster</code> custom resource definition in the Helm chart.</p>
 <pre><code class="language-python"># Key: &lt;kind&gt; :: &lt;metadata.name&gt;
 GitRepository :: home-ops-kubernetes
     Kustomization :: cluster

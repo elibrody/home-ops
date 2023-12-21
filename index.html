@@ -33,6 +33,7 @@
         <link rel="stylesheet" href="././assets/css/mdbook-admonish.css">
         <link rel="stylesheet" href="./theme/catppuccin.css">
         <link rel="stylesheet" href="./theme/catppuccin-highlight.css">
+        <link rel="stylesheet" href="./mdbook-admonish.css">
 
     </head>
     <body>
@@ -148,7 +149,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<div id="admonition-warning" class="admonition warning">
+<div id="admonition-warning" class="admonition admonish-warning">
 <div class="admonition-title">
 <p>Warning</p>
 <p><a class="admonition-anchor-link" href="#admonition-warning"></a></p>
@@ -161,14 +162,19 @@ They may or may not work for you.</p>
 <hr />
 <br />
 <div align="center">
-<img src="https://github.com/bjw-s/bjw-s/blob/main/_assets/images/logo.jpg?raw=true" align="left" width="144px" height="144px"/>
+<img src="https://github.com/bjw-s/bjw-s/blob/main/_assets/images/logo.jpg?raw=true" width="144px" height="144px"/>
 <h2 id="my-home-operations-repository"><a class="header" href="#my-home-operations-repository">My Home Operations repository</a></h2>
 <p><em>... managed by Flux, Renovate and GitHub Actions</em> 🤖</p>
-</div>
-<div align="center">
-<p><a href="https://discord.gg/k8s-at-home"><img src="https://img.shields.io/discord/673534664354430999?style=for-the-badge&amp;label&amp;logo=discord&amp;logoColor=white&amp;color=blue" alt="Discord" /></a>
-<a href="https://www.talos.dev/"><img src="https://img.shields.io/badge/v1.26-blue?style=for-the-badge&amp;logo=kubernetes&amp;logoColor=white" alt="Kubernetes" /></a>
-<a href="https://github.com/bjw-s/home-ops/actions/workflows/schedule-renovate.yaml"><img src="https://img.shields.io/github/actions/workflow/status/bjw-s/home-ops/schedule-renovate.yaml?branch=main&amp;label=&amp;logo=renovatebot&amp;style=for-the-badge&amp;color=blue" alt="Renovate" /></a></p>
+<p><a href="https://discord.gg/home-operations"><img src="https://img.shields.io/discord/673534664354430999?style=for-the-badge&amp;label&amp;logo=discord&amp;logoColor=white&amp;color=blue" alt="Discord" /></a> 
+<a href="https://github.com/bjw-s/home-ops/actions/workflows/schedule-renovate.yaml"><img src="https://img.shields.io/github/actions/workflow/status/bjw-s/.github/schedule-renovate.yaml?branch=main&amp;label=&amp;logo=renovatebot&amp;style=for-the-badge&amp;color=blue" alt="Renovate" /></a></p>
+<p>Main k8s cluster stats:</p>
+<p><a href="https://www.talos.dev/"><img src="https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbjw-s%2Fhome-ops%2Fmain%2Fkubernetes%2Fmain%2Ftalos%2Ftalconfig.yaml&amp;query=%24.kubernetesVersion&amp;flat-square&amp;logo=kubernetes&amp;logoColor=white&amp;label=version" alt="Kubernetes" />
+</a> 
+<a href="https://github.com/kashalls/kromgo/"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.bjw-s.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dmain_cluster_age_days&amp;style=flat-square&amp;label=Age" alt="Age-Days" /></a> 
+<a href="https://github.com/kashalls/kromgo/"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.bjw-s.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dmain_cluster_node_count&amp;style=flat-square&amp;label=Nodes" alt="Node-Count" /></a> 
+<a href="https://github.com/kashalls/kromgo/"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.bjw-s.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dmain_cluster_pod_count&amp;style=flat-square&amp;label=Pods" alt="Pod-Count" /></a> 
+<a href="https://github.com/kashalls/kromgo/"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.bjw-s.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dmain_cluster_cpu_usage&amp;style=flat-square&amp;label=CPU" alt="CPU-Usage" /></a> 
+<a href="https://github.com/kashalls/kromgo/"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.bjw-s.dev%2Fquery%3Fformat%3Dendpoint%26metric%3Dmain_cluster_memory_usage&amp;style=flat-square&amp;label=Memory" alt="Memory-Usage" /></a> </p>
 </div>
 <br><br>
 <p>👋 Welcome to my Home Operations repository. This is a mono repository for my home infrastructure and Kubernetes cluster. I try to adhere to Infrastructure as Code (IaC) and GitOps practices using the tools like <a href="https://www.ansible.com/">Ansible</a>, <a href="https://www.terraform.io/">Terraform</a>, <a href="https://kubernetes.io/">Kubernetes</a>, <a href="https://github.com/fluxcd/flux2">Flux</a>, <a href="https://github.com/renovatebot/renovate">Renovate</a> and <a href="https://github.com/features/actions">GitHub Actions</a>.</p>
